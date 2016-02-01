@@ -2,8 +2,13 @@
 #define TC_COMMAND_OK 1
 #define TC_COMMAND_INVALID 0
 
-#include <tinycalc.h>
+#include "tinycalc.h"
 #include <stdio.h>
+
+typedef struct {
+  double vals[TC_MEM_SZ];
+  int most_recent;
+} tc_memory_t;
 
 
 int check_command(char op) {

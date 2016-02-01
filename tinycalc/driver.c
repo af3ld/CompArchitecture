@@ -1,8 +1,9 @@
-#include<stdio.h>
-#include"tinycalc.h"
+#include <stdio.h>
+#include "tinycalc.h"
 
 
-/* Put your application code in this file   */
+
+
 
 int main(void) {
 

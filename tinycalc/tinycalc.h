@@ -1,7 +1,7 @@
 /*-------------------------------tinycalc.h -----------------------------------------//
 // *** DON'T EDIT THIS FILE.  YOUR SOLUTION WILL BE COMPILED USING THIS VERSION OF    //
 //  tinycalc.h. FOR GRADING                                                         //
-//----------------------------------------------------------------------------------//*
+//----------------------------------------------------------------------------------*/
 #define TC_COMMAND_QUIT 0
 #define TC_COMMAND_OK 1
 #define TC_COMMAND_INVALID 0
@@ -11,7 +11,7 @@
 typedef struct _tc_mem {
   double vals[TC_MEM_SZ];
   int most_recent;
-}tc_memory_t;
+} tc_memory_t;
 
 //--------------------------- read_command --------------------------------//
 // reads an operator (char) and an operand (double) from stdin. function   //
