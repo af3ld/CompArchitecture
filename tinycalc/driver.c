@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include "tinycalc.h"
-#include <ctype.h>
 #include <stdlib.h>
 
-
+void print_array(double *a, int size){
+	for (int i = 0; i < size; i++){
+		printf("%lf\n", a[i]);
+	}
+}
 
 int main(void) {
 	char op; double num;
@@ -14,23 +17,24 @@ int main(void) {
 	printf("\nWelcome to TinyCalc!\n\n Enter an operation <+, - , *, /, ^>");
 	printf(" followed by operand\n\n Enter 'q' or 'Q' to quit.\n\n");
 	printf(" Enter 'm' or 'M' followed by location (0-4) to load a previous\n");
-	printf(" result from memory.");
+	printf(" result from memory.\n");
 
-	mem_save(&mem, 0);
 	while (go) {
 		printf("\n>");
-		if (read_command(&op, &num) == 0) {
-			go = 0;
-		} else if (check_command(op)) {
-			if (tolower(op) == 'm') {
-				printf("%lf", mem_read(mem, num));
-			} else {
-				execute_calculation(op, num, &res);
-				printf("%.2lf", res);
+		if (read_command(&op, &num)) {
+			if (check_command(op)) {
+				if (op == 'm' || op == 'M') {
+					printf("%lf\n", mem_read(mem, num));
+				} else {
+					execute_calculation(op, num, &res);
+					mem_save(&mem, res);
+					print_array(mem.vals, mem.most_recent);
+				}
 			}
+		} else {
+			go = 0;
 		}
 	}
-
 	return (0);
 }
 
