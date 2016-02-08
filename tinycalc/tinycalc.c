@@ -56,7 +56,7 @@ void execute_calculation(char f_operator, double f_operand, double *p_result) {
 			*p_result = result;
 		} else {
 			for (i = 0; i < -f_operand; i++) {
-				result *= *p_result;	
+				result *= *p_result;
 			}
 			*p_result = 1 / result;
 		}
@@ -64,20 +64,15 @@ void execute_calculation(char f_operator, double f_operand, double *p_result) {
 }
 
 double mem_read(tc_memory_t mem, int v) {
-	return (v < TC_MEM_SZ) ? mem.vals[v]: mem.vals[0];
+	return (v < TC_MEM_SZ) ? mem.vals[v] : mem.vals[0];
 }
 
 void mem_save(tc_memory_t *mem, double v) {
 	int i;
-	if (mem->most_recent < TC_MEM_SZ) {
-		i = mem->most_recent;
-		mem->vals[i] = v;
-		// printf("value:%lf, position:%d\n", mem->vals[i], i);
-		mem->most_recent++;
-	} else {
-		for (i = 4; i >= 1; i--) {
-			mem->vals[i] = mem->vals[i - 1];
-		}
-		mem->vals[0] = v;
+	for (i = mem->most_recent; i >= 1; i--) {
+		mem->vals[i] = mem->vals[i - 1];
 	}
+	mem->vals[0] = v;
+	mem->most_recent++;
+
 }

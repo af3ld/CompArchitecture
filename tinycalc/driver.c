@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 void print_array(double *a, int size){
-	for (int i = 0; i < size; i++){
+	int i;
+	for (i = 0; i < size; i++){
 		printf("%lf\n", a[i]);
 	}
 }
