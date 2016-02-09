@@ -2,6 +2,7 @@
 #include "tinycalc.h"
 #include <stdlib.h>
 
+
 void print_array(double *a, int size){
 	int i;
 	for (i = 0; i < size; i++){
@@ -29,7 +30,8 @@ int main(void) {
 				} else {
 					execute_calculation(op, num, &res);
 					mem_save(&mem, res);
-					print_array(mem.vals, mem.most_recent);
+					printf("%lf\n", res);
+					// print_array(mem.vals, mem.most_recent);
 				}
 			}
 		} else {

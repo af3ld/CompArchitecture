@@ -29,11 +29,8 @@ int check_command(char op) {
 
 int read_command(char *op, double *num) {
 	scanf(" %c %lf", op, num);
-	if (*op == 'q' || *op == 'Q') {
-		return TC_COMMAND_QUIT;
-	} else {
-		return TC_COMMAND_OK;
-	}
+	return (*op == 'q' || *op == 'Q') ? TC_COMMAND_QUIT :
+	       TC_COMMAND_OK;
 }
 
 void execute_calculation(char f_operator, double f_operand, double *p_result) {
@@ -64,7 +61,7 @@ void execute_calculation(char f_operator, double f_operand, double *p_result) {
 }
 
 double mem_read(tc_memory_t mem, int v) {
-	return (v < TC_MEM_SZ) ? mem.vals[v] : mem.vals[0];
+	return (v >= TC_MEM_SZ || v < 0) ? mem.vals[0] : mem.vals[v];
 }
 
 void mem_save(tc_memory_t *mem, double v) {
