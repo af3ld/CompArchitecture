@@ -28,9 +28,14 @@ int check_command(char op) {
 }
 
 int read_command(char *op, double *num) {
-	scanf(" %c %lf", op, num);
-	return (*op == 'q' || *op == 'Q') ? TC_COMMAND_QUIT :
-	       TC_COMMAND_OK;
+	// scanf(" %c %lf", op, num);
+	scanf(" %c", op);
+	if (*op == 'q' || *op == 'Q') {
+		return TC_COMMAND_QUIT;
+	} else {
+		scanf(" %lf", num);
+		return TC_COMMAND_OK;
+	}
 }
 
 void execute_calculation(char f_operator, double f_operand, double *p_result) {
@@ -60,6 +65,9 @@ void execute_calculation(char f_operator, double f_operand, double *p_result) {
 	}
 }
 
+
+//TODO: fix float exponents
+
 double mem_read(tc_memory_t mem, int v) {
 	return (v >= TC_MEM_SZ || v < 0) ? mem.vals[0] : mem.vals[v];
 }
@@ -71,5 +79,4 @@ void mem_save(tc_memory_t *mem, double v) {
 	}
 	mem->vals[0] = v;
 	mem->most_recent++;
-
 }

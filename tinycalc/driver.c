@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 
+
 void print_array(double *a, int size){
 	int i;
 	for (i = 0; i < size; i++){

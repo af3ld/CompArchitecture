@@ -1,7 +1,7 @@
 /*-------------------------------tinycalc.h -----------------------------------------//
-// *** DON'T EDIT THIS FILE.  YOUR SOLUTION WILL BE COMPILED USING THIS VERSION OF    //
-//  tinycalc.h. FOR GRADING                                                         //
-//----------------------------------------------------------------------------------*/
+// *** DON'T EDIT THIS FILE.  YOUR SOLUTION WILL BE COMPILED USING THIS VERSION OF   //
+//  tinycalc.h. FOR GRADING                                                          //
+//-----------------------------------------------------------------------------------*/
 #define TC_COMMAND_QUIT 0
 #define TC_COMMAND_OK 1
 #define TC_COMMAND_INVALID 0
