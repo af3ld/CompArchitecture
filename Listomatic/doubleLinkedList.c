@@ -5,8 +5,8 @@
 
 
 Node* newNode(int x) {
-	struct Node* newNode = (struct Node*)
-	                       malloc(sizeof(struct Node));
+	Node* newNode = (struct Node*)
+	                malloc(sizeof(struct Node));
 	newNode->value = x;
 	newNode->prev = NULL;
 	newNode->next = NULL;
@@ -14,36 +14,56 @@ Node* newNode(int x) {
 }
 
 void insertFront(int x) {
-	struct Node* newNode = GetNewNode(x);
-	if(head == NULL) {
-		head = newNode;
+	Node* newNode = GetNewNode(x);
+	if (firstNode == NULL) {
+		firstNode = newNode;
 		return;
 	}
-	head->prev = newNode;
-	newNode->next = head; 
-	head = newNode;
+	firstNode->prev = newNode;
+	newNode->next = firstNode;
+	firstNode = newNode;
 }
 
-
-void InsertAtTail(int x) {
-	struct Node* temp = head;
-	struct Node* newNode = GetNewNode(x);
-	if(head == NULL) {
-		head = newNode;
+void insertRear(int x) {
+	Node* temp = firstNode;
+	Node* newNode = GetNewNode(x);
+	if (firstNode == NULL) {
+		firstNode = newNode;
 		return;
 	}
-	while(temp->next != NULL) temp = temp->next; // Go To last Node
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
 	temp->next = newNode;
 	newNode->prev = temp;
 }
 
 
-
-void pop(List *list)
-{
-
-	Node *node = list->last;
-	return node != NULL ? List_remove(list, node) : NULL;
+void printList(int toggle) {
+	struct Node* temp = firstNode;
+	if (temp == NULL) {
+		printf("The list is empty\n");
+		return;
+	} else {
+		switch (toggle) {
+		default:
+			printf("Printing in regular order: ")
+			while (temp != NULL) {
+				printf("%d ", temp->data);
+				temp = temp->next;
+			}
+		case REVERSE:
+			while (temp->next != NULL) {
+				temp = temp->next;
+			}
+			printf("Printing in reverse order: ")
+			while (temp != NULL) {
+				printf("%d ", temp->data);
+				temp = temp->prev;
+			}
+		}
+		printf("\n");
+	}
 }
 
 
