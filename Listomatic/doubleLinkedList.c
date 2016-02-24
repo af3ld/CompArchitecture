@@ -4,9 +4,8 @@
 
 
 
-Node* newNode(int x) {
-	Node* newNode = (struct Node*)
-	                malloc(sizeof(struct Node));
+Node* creatNewNode(int x) {
+	Node* newNode = (Node*) malloc( sizeof(Node));
 	newNode->value = x;
 	newNode->prev = NULL;
 	newNode->next = NULL;
@@ -14,7 +13,7 @@ Node* newNode(int x) {
 }
 
 void insertFront(int x) {
-	Node* newNode = GetNewNode(x);
+	Node *newNode = creatNewNode(x);
 	if (firstNode == NULL) {
 		firstNode = newNode;
 		return;
@@ -24,45 +23,49 @@ void insertFront(int x) {
 	firstNode = newNode;
 }
 
-void insertRear(int x) {
-	Node* temp = firstNode;
-	Node* newNode = GetNewNode(x);
-	if (firstNode == NULL) {
-		firstNode = newNode;
-		return;
-	}
-	while (temp->next != NULL) {
-		temp = temp->next;
-	}
-	temp->next = newNode;
-	newNode->prev = temp;
-}
-
 
 void printList(int toggle) {
-	struct Node* temp = firstNode;
-	if (temp == NULL) {
+	struct Node *tempNode = firstNode;
+	if (tempNode == NULL) {
 		printf("The list is empty\n");
 		return;
 	} else {
 		switch (toggle) {
-		default:
-			printf("Printing in regular order: ")
-			while (temp != NULL) {
-				printf("%d ", temp->data);
-				temp = temp->next;
-			}
 		case REVERSE:
-			while (temp->next != NULL) {
-				temp = temp->next;
+			while (tempNode != NULL) {
+				printf("%d\n", tempNode->value);
+				tempNode = tempNode->next;
 			}
-			printf("Printing in reverse order: ")
-			while (temp != NULL) {
-				printf("%d ", temp->data);
-				temp = temp->prev;
+		case FORWARD:
+			while (tempNode->next != NULL) {
+				tempNode = tempNode->next;
+			}
+			while (tempNode != NULL) {
+				printf("%d\n", tempNode->value);
+				tempNode = tempNode->prev;
 			}
 		}
-		printf("\n");
+	}
+}
+
+void sort(int length) {
+	int temp, i, j;
+	struct Node *currentNode, *tempNode;
+	if (currentNode == NULL) {
+		printf("The list is empty\n");
+		return;
+	}
+	for (j = 0 ; j < length; j++) {
+		currentNode = firstNode;
+		for (i = 0; i < length - 1 - j; i++) {
+			if (currentNode->value > currentNode->next->value) {
+				temp = currentNode->value;
+				currentNode->value = currentNode->next->value;
+				currentNode->next->value = temp;
+			}
+		tempNode = currentNode;
+        currentNode = currentNode->next;
+		}
 	}
 }
 
