@@ -11,14 +11,28 @@ void intCounter(int counter) {
 		printf("There were %d ints entered\n", counter);
 }
 
+void printArray(int size, int *arr) {
+	int i;
+	for (i = 0; i < size; i++) {
+		printf("%d\n", arr[i]);
+	}
+}
+
+
+
 int main() {
-	Node node;
-	int i, counter = 0;
+	Node *copyNode;
+	int counter = 0;
+	int i, *arr;
 	while (scanf("%d", &i) == 1) {
 		insertFront(i);
 		counter++;
 	}
 	intCounter(counter);
 	sort(counter);
-	// printList(FORWARD);
+	printList(REVERSE, 'o');
+	printList(FORWARD, 'o'); //calls sorted orignal
+	printList(FORWARD, 'c'); //calls copy
+	
+	// printArray(counter, arr);
 }

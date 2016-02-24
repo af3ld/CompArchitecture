@@ -5,7 +5,7 @@
 
 
 Node* creatNewNode(int x) {
-	Node* newNode = (Node*) malloc( sizeof(Node));
+	Node* newNode = (Node*) malloc(sizeof(Node));
 	newNode->value = x;
 	newNode->prev = NULL;
 	newNode->next = NULL;
@@ -14,18 +14,23 @@ Node* creatNewNode(int x) {
 
 void insertFront(int x) {
 	Node *newNode = creatNewNode(x);
-	if (firstNode == NULL) {
+	Node *newNodeCopy = creatNewNode(x);
+	if (firstNode == NULL || copy == NULL) {
 		firstNode = newNode;
+		copy = newNodeCopy;
 		return;
 	}
 	firstNode->prev = newNode;
+	copy->prev = newNodeCopy;
 	newNode->next = firstNode;
+	newNodeCopy->next = copy;
 	firstNode = newNode;
+	copy = newNodeCopy;
 }
 
 
-void printList(int toggle) {
-	struct Node *tempNode = firstNode;
+void printList(int toggle, char input) {
+	struct Node *tempNode = (input == 'o') ? firstNode : copy;
 	if (tempNode == NULL) {
 		printf("The list is empty\n");
 		return;
@@ -63,10 +68,11 @@ void sort(int length) {
 				currentNode->value = currentNode->next->value;
 				currentNode->next->value = temp;
 			}
-		tempNode = currentNode;
-        currentNode = currentNode->next;
+			tempNode = currentNode;
+			currentNode = currentNode->next;
 		}
 	}
 }
+
 
 

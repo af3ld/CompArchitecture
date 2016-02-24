@@ -11,6 +11,7 @@ typedef struct Node{
 
 
 Node *firstNode;
+Node *copy;
 
 // creates new node
 // TODO: remember to free the memory as currently causes a mem leak
@@ -21,8 +22,9 @@ void insertFront(int x);
 
 // Prints list in forward or reverse order
 // depending on toggle
-void printList(int toggle) ;
+void printList(int toggle, char input);
 
 // sorts the linked list
 void sort(int length);
+
 
