@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define REVERSE 0
-#define FORWARD 1
 
 typedef struct Node{
 	int value;
@@ -20,9 +18,10 @@ Node newNode(int x);
 // inserts node into front of list
 void insertFront(int x);
 
-// Prints list in forward or reverse order
-// depending on toggle
-void printList(int toggle, char input);
+// Prints list in ascending order
+void printListAscending(char input);
+
+void printListDescending(char input);
 
 // sorts the linked list
 void sort(int length);

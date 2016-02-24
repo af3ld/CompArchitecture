@@ -29,29 +29,39 @@ void insertFront(int x) {
 }
 
 
-void printList(int toggle, char input) {
+void printListAscending(char input) {
 	struct Node *tempNode = (input == 'o') ? firstNode : copy;
 	if (tempNode == NULL) {
 		printf("The list is empty\n");
 		return;
 	} else {
-		switch (toggle) {
-		case REVERSE:
-			while (tempNode != NULL) {
-				printf("%d\n", tempNode->value);
+		while (tempNode != NULL) {
+			printf("%d\n", tempNode->value);
+			if (tempNode->next != NULL) {
 				tempNode = tempNode->next;
-			}
-		case FORWARD:
-			// while (tempNode->next != NULL) {
-			// 	tempNode = tempNode->next;
-			// }
-			while (tempNode != NULL) {
-				printf("%d\n", tempNode->value);
-				tempNode = tempNode->prev;
+			} else {
+				break;
 			}
 		}
 	}
 }
+
+void printListDescending(char input) {
+	struct Node *tempNode = (input == 'o') ? firstNode : copy;
+	if (tempNode == NULL) {
+		printf("The list is empty\n");
+		return;
+	} else {
+		while (tempNode->next != NULL) {
+			tempNode = tempNode->next;
+		}
+		while (tempNode != NULL) {
+			printf("%d\n", tempNode->value);
+			tempNode = tempNode->prev;
+		}
+	}
+}
+
 
 void sort(int length) {
 	int temp, i, j;

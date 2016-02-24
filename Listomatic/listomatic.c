@@ -30,9 +30,9 @@ int main() {
 	}
 	intCounter(counter);
 	sort(counter);
-	printList(REVERSE, 'o');
-	printList(FORWARD, 'o'); //calls sorted orignal
-	printList(FORWARD, 'c'); //calls copy
+	printListAscending('o');
+	printListDescending('o');
+	printListDescending('c');; //calls copy
 	
 	// printArray(counter, arr);
 }
