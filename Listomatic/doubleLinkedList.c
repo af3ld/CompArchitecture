@@ -42,9 +42,9 @@ void printList(int toggle, char input) {
 				tempNode = tempNode->next;
 			}
 		case FORWARD:
-			while (tempNode->next != NULL) {
-				tempNode = tempNode->next;
-			}
+			// while (tempNode->next != NULL) {
+			// 	tempNode = tempNode->next;
+			// }
 			while (tempNode != NULL) {
 				printf("%d\n", tempNode->value);
 				tempNode = tempNode->prev;
