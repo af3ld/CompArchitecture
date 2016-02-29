@@ -1,4 +1,5 @@
 # CompArchitecture
 
 * Lab2: Tinycalc 
-* Lab3: Bitwise operators
+* Lab3: Listomatic
+* Lab4: Bitwise operators
