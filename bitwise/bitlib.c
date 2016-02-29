@@ -18,7 +18,10 @@ int bitwise_nor(int x, int y) {
  * Max # of operators: 14
  */
 int bitwise_xor(int x, int y) {
-	return 0;
+	int temp1, temp2;
+	temp1 = x & y;
+	temp2 = ~x & ~y;
+	return ~temp1 & ~temp2;
 }
 
 /*
