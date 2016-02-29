@@ -6,18 +6,17 @@
  *  Max. # of operators: 8
  */
 int bitwise_nor(int x, int y) {
-  return 0;
-
+	return (~x & ~y);
 }
 
 
-/* 
+/*
  * bitwise_xor - implement x xor y using only ~ and &.
  * Example bitwise_xor(4,5) = 0x1
  * Max # of operators: 14
  */
 int bitwise_xor(int x, int y) {
-  return 0;
+	return 0;
 }
 
 /*
@@ -28,7 +27,7 @@ int bitwise_xor(int x, int y) {
  * Max # of operators: 6
  */
 int eval_not_equal(int x, int y) {
- return 0;
+	return 0;
 
 }
 
@@ -37,13 +36,13 @@ int eval_not_equal(int x, int y) {
  * get_byte - extract byte n from word x.
  *  using only !, ~, &, |, ^, +, << and >>
  * do not use any constant values of more than 1 byte in size
- * assume ordering as 0=least significant byte,  
+ * assume ordering as 0=least significant byte,
  * 3 = most significant byte.
  * Example: get_byte(0x12345678, 1) = 0x56
  * Max # of operators: 6
 */
 int get_byte(int x, int n) {
-  return 0;
+	return 0;
 
 
 }
@@ -54,11 +53,11 @@ int get_byte(int x, int n) {
 * copy_lsbit - set all bits of result value to the least significant bit of x
 *  using only !, ~, &, |, ^, +, << and >>
 * do not use any constant values of more than 1 byte in size
-*  Examples: copy_lsbit(5) = 0xFFFFFFFF, copy_lsbit(8) = 0x0 
+*  Examples: copy_lsbit(5) = 0xFFFFFFFF, copy_lsbit(8) = 0x0
 *  Max # of operators: 5
 */
 int copy_lsbit(int x) {
-  return 0;
+	return 0;
 }
 
 /*
@@ -69,8 +68,5 @@ int copy_lsbit(int x) {
  * Max # of operators: 40
  */
 int bit_count(int x) {
-  return 0;
+	return 0;
 }
-bitlib.cOpen
-Alex Feldman 
-(alexfeldman@lclark.edu)Displaying bitlib.c.
