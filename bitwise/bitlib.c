@@ -1,5 +1,7 @@
 
 #include <stdio.h>
+
+
 /*
  * bitwise_nor  - implement ~(x|y) using only ~ and &.
  *  Example biwise_nor(6, 5) = 0xFFFFFFF8
@@ -27,8 +29,7 @@ int bitwise_xor(int x, int y) {
  * Max # of operators: 6
  */
 int eval_not_equal(int x, int y) {
-	return 0;
-
+	return (x ^ y);
 }
 
 

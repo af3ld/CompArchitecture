@@ -4,7 +4,7 @@
 int main(void) {
 
   int arg1,arg2;
-  printf("%u\n", ~6 & ~5);
+  // printf("%u\n", (3 ^ 2));
   
   do {
     puts("Input two integers: x and y\n and then press enter.  Press Ctl+D to exit.");
