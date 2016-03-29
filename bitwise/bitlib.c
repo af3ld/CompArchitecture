@@ -72,6 +72,7 @@ int copy_lsbit(int x) {
  * Max # of operators: 40
  */
 int bit_count(int x) {
+	// Google hamming code
 	int counter = 0;
 	while (x > 0){
 		counter++;
