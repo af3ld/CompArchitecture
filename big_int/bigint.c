@@ -14,27 +14,16 @@ big_int_t * unsigned_to_big_int(unsigned int x) {
 }
 
 big_int_t * hex_to_big_int(char *hex_string) {
-  int i;
   char tmp[3] = {0};
   big_int_t *a = malloc(sizeof(big_int_t));
 
-  for (i = 0; i < BIG_INT_BIT_WIDTH; i++){
+  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
     memcpy(tmp, hex_string + 2 * i, 2);
-    a->bytes[i] = (unsigned char) tmp;
-
-  return a;
+    a->bytes[i] = (unsigned char) strtol(tmp, NULL,  0);
   }
-
-
-  // int numbl = strlen(hex_string);
-  // big_int_t* out = (big_int_t*)malloc(numbl);
-  // for (int i = 0; i < numbl; i++) {
-  //   out[i] = numb[i] - CHARZERO_ABOVEINTZERO;
-  // }
-  // // num->number = out;
-  // // num->length = numbl;
-  return NULL;
+  return a;
 }
+
 
 void destroy_big_int(big_int_t *a) {
 

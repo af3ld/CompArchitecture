@@ -6,8 +6,7 @@ void print_big_int(big_int_t *);
 
 int main(void) {
   // big_int_t *a = unsigned_to_big_int(45);
-  big_int_t *b = hex_to_big_int("0x012");
-
+  big_int_t *b = hex_to_big_int("0x0000000000000002");
 
   // print_big_int(a);
   print_big_int(b);
