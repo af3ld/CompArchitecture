@@ -1,20 +1,19 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include"bigint.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "bigint.h"
 
 void print_big_int(big_int_t *);
 
 int main(void) {
+  // big_int_t *a = unsigned_to_big_int(45);
+  big_int_t *b = hex_to_big_int("0x012");
 
-  big_int_t *a = unsigned_to_big_int(45);
-  big_int_t *b = hex_to_big_int("0xfffdffccffddff000aa134567");
 
-
-  print_big_int(a);
+  // print_big_int(a);
   print_big_int(b);
 
-  destroy_big_int(a);
-  destroy_big_int(b);
+  // destroy_big_int(a);
+  // destroy_big_int(b);
 }
 
 

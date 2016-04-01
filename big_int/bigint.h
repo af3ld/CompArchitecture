@@ -2,7 +2,9 @@
 #define BIG_INT_BYTE_WIDTH BIG_INT_BIT_WIDTH/(sizeof(char) * 8)
 
 // values should be stored using a little-endian format
-typedef struct { unsigned char bytes[BIG_INT_BYTE_WIDTH]; } big_int_t;
+typedef struct { 
+	unsigned char bytes[BIG_INT_BYTE_WIDTH]; 
+} big_int_t;
 
 
 // create a new big_int_t from an unsigned int
