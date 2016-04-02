@@ -5,11 +5,11 @@
 void print_big_int(big_int_t *);
 
 int main(void) {
-  // big_int_t *a = unsigned_to_big_int(45);
-  big_int_t *b = hex_to_big_int("0x0000000000000002");
+  big_int_t *a = unsigned_to_big_int(123124);
+  // big_int_t *b = hex_to_big_int("0x2323");
 
-  // print_big_int(a);
-  print_big_int(b);
+  print_big_int(a);
+  // print_big_int(b);
 
   // destroy_big_int(a);
   // destroy_big_int(b);
