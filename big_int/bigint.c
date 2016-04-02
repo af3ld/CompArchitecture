@@ -2,56 +2,42 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <math.h>
 
-#define CHARZERO 48
-#define INTSIZE(x) (int) log10(x) + 1 
 
-// TIP: internet search and read about C's string.h library
-//  you will find many functions that might be of use in this assignment
-//  like strlen(cont char *) which returns the length of a string
-int intToCharArray(unsigned int x, char *charArray) {
-  int n = log10(x) + 1;
-  for (int i = 0; i < n; i++) {
-    charArray[i] = (x % 10) + '0';
-    x /= 10;
+void clear(big_int_t *a) {
+  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
+    a->bytes[i] = (char) 0;
   }
-  return n;
 }
+
 
 big_int_t * unsigned_to_big_int(unsigned int x) {
+  int finalDigit = -1;
   big_int_t *a = malloc(sizeof(big_int_t));
-  char charArray[INTSIZE(x)];
-  int n = intToCharArray(x, &charArray);
-  for (int i = 0; i < n; i++){
-    a->bytes[i] = charArray[i];
+  clear(a);
+  while (x > 0) {
+    finalDigit++;
+    a->bytes[finalDigit] = (x % 10);
+    x /= 10;
   }
   return a;
 }
+
 
 big_int_t * hex_to_big_int(char *hex_string) {
-  // char *valid_characters = "0123456789abcdef";
-  // char *c = hex_string;
-  // int ignoreFirstX = 0;
-  // while (*c) {
-  //   if (!strchr(valid_characters, *c)) {
-  //     if (ignoreFirstX) {
-  //       return NULL;
-  //     }
-  //     ignoreFirstX = 1;
-  //   }
-  //   c++;
-  // }
-  char tmp[3] = {0};
   big_int_t *a = malloc(sizeof(big_int_t));
-  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
-    memcpy(tmp, hex_string + (2 * i), 2);
-    a->bytes[i] = (unsigned char) strtol(tmp, NULL,  0);
+  char *valid = "123456789abcdef";
+  int numLength = strlen(hex_string);
+  int end = numLength - 1;
+  for (int i = 0; i < numLength - 2; i++) {
+    if (strchr(valid, hex_string[end - i])) {
+      a->bytes[i] = (char) hex_string[end - i];
+    } else {
+      return NULL;
+    }
   }
   return a;
 }
-
-
 
 
 
@@ -61,16 +47,33 @@ void destroy_big_int(big_int_t *a) {
 
 
 void big_int_and(big_int_t *a, big_int_t *b) {
-
-
+  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
+    a->bytes[i] = a->bytes[i] & b->bytes[i];
+  }
 }
 
 void big_int_not(big_int_t *a) {
-
+  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
+    a->bytes[i] = ~(a->bytes[i]);
+  }
 }
 
 int big_int_add(big_int_t *a, big_int_t *b) {
-  return 0;
+  int carry, answer = 0;
+  int isZero = 1;
+  char temp[BIG_INT_BIT_WIDTH];
+  for (int i = 0; i < BIG_INT_BIT_WIDTH; i++) {
+    temp[i] = (char)(carry + a->bytes[i] + b->bytes[i]) % 10;
+    carry = (carry + a->bytes[i] + b->bytes[i]) / 10;
+  }
+  for (int i = BIG_INT_BIT_WIDTH - 1; i >= 0; i--) {
+    if ((temp[i] != 0) || (!isZero)) {
+      isZero = 0;
+      answer *= 10;
+      answer += temp[i];
+    }
+  }
+return answer;
 }
 
 void big_int_shiftl(big_int_t *a, int s) {
