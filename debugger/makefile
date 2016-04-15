@@ -1,8 +1,8 @@
 CC=gcc
-EXEC=bigadventure
-OBJS=driver.o bigint.o
+EXEC=demo
+OBJS=driver.o collection.o
 SOURCES=*.c
-FLAGS=-g -w -Wall -std=c99
+FLAGS=-g
 
 all: $(EXEC)
 
@@ -14,4 +14,3 @@ $(EXEC): $(OBJS)
 
 clean:
 	rm -f *.o $(EXEC) a.out
-
